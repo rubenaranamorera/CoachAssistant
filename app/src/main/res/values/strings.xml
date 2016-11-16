@@ -1,0 +1,10 @@
+<resources>
+    <!-- Global -->
+    <string name="app_name">CoachAssistant</string>
+
+    <!-- ChooseTeamActivity -->
+    <string name="choose_team_activity_welcome">Welcome to Coach Assistant!</string>
+    <string name="choose_team_claim">The new member of your staff</string>
+    <string name="choose_team_activity_create_or_select_team">You have not created any team yet. Create a new one to start! </string>
+
+</resources>
