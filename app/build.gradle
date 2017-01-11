@@ -37,6 +37,7 @@ dependencies {
     apt "com.google.dagger:dagger-compiler:2.7"
     compile 'com.google.dagger:dagger:2.7'
     provided 'org.glassfish:javax.annotation:10.0-b28'
+
     testCompile 'junit:junit:4.12'
     compile project(path: ':domain')
     compile 'com.android.support:design:25.0.1'

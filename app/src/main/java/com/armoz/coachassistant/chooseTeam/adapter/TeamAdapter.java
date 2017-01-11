@@ -7,12 +7,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.armoz.coachassistant.R;
+import com.armoz.coachassistant.base.viewModel.TeamViewModel;
 
 import java.util.List;
 
 public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
 
-    private List<String> teams;
+    private List<TeamViewModel> teams;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -26,7 +27,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
         }
     }
 
-    public TeamAdapter(List<String> teams) {
+    public TeamAdapter(List<TeamViewModel> teams) {
         this.teams = teams;
     }
 
@@ -35,16 +36,24 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
         View teamCardView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_team_card, parent, false);
 
-        TextView teamNameView = (TextView) teamCardView.findViewById(R.id.teamName);
+        final TextView teamNameView = (TextView) teamCardView.findViewById(R.id.teamName);
 
-        ViewHolder vh = new ViewHolder(teamCardView, teamNameView);
+        final ViewHolder vh = new ViewHolder(teamCardView, teamNameView);
+
+        teamCardView.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                teamNameView.setText("clicked");
+            }
+        });
+
         return vh;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.teamNameView.setText(teams.get(position));
-        System.out.println(teams.get(position));
+        holder.teamNameView.setText(teams.get(position).getClub());
     }
 
     @Override

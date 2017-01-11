@@ -1,8 +1,12 @@
 
 package com.armoz.coachassistant.chooseTeam.presenter;
 
+import com.armoz.coachassistant.base.viewModel.TeamViewModel;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.armoz.coachassistant.base.viewModel.TeamViewModelBuilder.teamViewModel;
 
 public class ChooseTeamPresenter {
     private View view;
@@ -16,14 +20,12 @@ public class ChooseTeamPresenter {
     }
 
     public void loadTeams() {
-        List<String> teamsList = new ArrayList<>();//Arrays.asList("TEAM A", "TEAM B", "TEAM C");
-
+        List<TeamViewModel> teamsList = new ArrayList<>();
+        teamsList.add(teamViewModel().setClub("Roser").setName("senior B").setCategory("2a Catalana").build());
         view.onTeamsLoaded(teamsList);
     }
 
     public interface View {
-
-        void onTeamsLoaded(List<String> teamsList);
-
+        void onTeamsLoaded(List<TeamViewModel> teamsList);
     }
 }

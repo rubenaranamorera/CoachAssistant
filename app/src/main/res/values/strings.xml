@@ -7,4 +7,11 @@
     <string name="choose_team_claim">The new member of your staff</string>
     <string name="choose_team_activity_create_or_select_team">You have not created any team yet. Create a new one to start! </string>
 
+    <!-- CreateTeamActivity -->
+    <string name="createTeam_hintName">Name</string>
+    <string name="createTeam_hintCategory">Category</string>
+    <string name="createTeam_hintClub">Club</string>
+    <string name="createTeam_create">Create</string>
+    <string name="global_requiredField">Required field</string>
+
 </resources>

@@ -9,10 +9,12 @@ import android.view.View;
 
 import com.armoz.coachassistant.R;
 import com.armoz.coachassistant.base.activity.BaseActivity;
+import com.armoz.coachassistant.base.viewModel.TeamViewModel;
 import com.armoz.coachassistant.chooseTeam.adapter.TeamAdapter;
 import com.armoz.coachassistant.chooseTeam.component.DaggerChooseTeamComponent;
 import com.armoz.coachassistant.chooseTeam.module.ChooseTeamModule;
 import com.armoz.coachassistant.chooseTeam.presenter.ChooseTeamPresenter;
+import com.armoz.coachassistant.createTeam.activity.CreateTeamActivity;
 
 import java.util.List;
 
@@ -20,8 +22,9 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-public class ChooseTeamActivity extends BaseActivity implements ChooseTeamPresenter.View{
+public class ChooseTeamActivity extends BaseActivity implements ChooseTeamPresenter.View {
 
     @BindView(R.id.teamList)
     public RecyclerView teamListView;
@@ -49,8 +52,9 @@ public class ChooseTeamActivity extends BaseActivity implements ChooseTeamPresen
         presenter.loadTeams();
     }
 
+
     @Override
-    public void onTeamsLoaded(List<String> teamsList) {
+    public void onTeamsLoaded(List<TeamViewModel> teamsList) {
         if (teamsList == null || teamsList.isEmpty()) {
             emptyStateView.setVisibility(View.VISIBLE);
         } else {
@@ -58,7 +62,14 @@ public class ChooseTeamActivity extends BaseActivity implements ChooseTeamPresen
         }
     }
 
-    private void showTeamList(List<String> teamsList) {
+
+    @OnClick(R.id.createTeamButton)
+    public void goToCreateTeamActivity() {
+        Intent intent = CreateTeamActivity.buildIntent(this);
+        this.startActivity(intent);
+    }
+
+    private void showTeamList(List<TeamViewModel> teamsList) {
         layoutManager = new LinearLayoutManager(this);
         teamListView.setLayoutManager(layoutManager);
 
@@ -76,3 +87,4 @@ public class ChooseTeamActivity extends BaseActivity implements ChooseTeamPresen
                 .inject(this);
     }
 }
+
