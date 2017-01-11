@@ -9,5 +9,12 @@
         android:layout_marginTop="@dimen/margin_xl"
         android:orientation="vertical">
 
+        <VideoView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/scouting_videoView" />
+
     </LinearLayout>
+
+
 </android.support.design.widget.CoordinatorLayout>

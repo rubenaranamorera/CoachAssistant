@@ -2,7 +2,10 @@ package com.armoz.coachassistant.scouting.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.widget.MediaController;
+import android.widget.VideoView;
 
 import com.armoz.coachassistant.R;
 import com.armoz.coachassistant.base.activity.BaseActivity;
@@ -12,12 +15,17 @@ import com.armoz.coachassistant.scouting.presenter.ScoutingPresenter;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ScoutingActivity extends BaseActivity implements ScoutingPresenter.View {
 
     @Inject
     ScoutingPresenter presenter;
+
+    @BindView(R.id.scouting_videoView)
+    VideoView videoView;
+
 
     public static Intent buildIntent(Context context) {
         return new Intent(context, ScoutingActivity.class);
@@ -30,6 +38,8 @@ public class ScoutingActivity extends BaseActivity implements ScoutingPresenter.
         ButterKnife.bind(this);
         initializeInjector();
         presenter.setView(this);
+
+        presenter.initializeFFmpeg(this.getApplicationContext());
     }
 
     private void initializeInjector() {
@@ -38,5 +48,21 @@ public class ScoutingActivity extends BaseActivity implements ScoutingPresenter.
                 .scoutingModule(new ScoutingModule())
                 .build()
                 .inject(this);
+    }
+
+    @Override
+    public void FFmpegNotSupportedShowError() {
+        //TODO:show error
+    }
+
+    @Override
+    public void onFFMpegInitialized() {
+        String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.sample;
+        Uri uri = Uri.parse(videoPath);
+        videoView.setVideoURI(uri);
+        MediaController mediaController = new MediaController(this);
+        mediaController.setAnchorView(videoView);
+        videoView.setMediaController(mediaController);
+        videoView.start();
     }
 }
