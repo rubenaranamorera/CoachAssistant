@@ -17,6 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".createTeam.activity.CreateTeamActivity" />
+        <activity android:name=".scouting.activity.ScoutingActivity" />
+
     </application>
 
 </manifest>

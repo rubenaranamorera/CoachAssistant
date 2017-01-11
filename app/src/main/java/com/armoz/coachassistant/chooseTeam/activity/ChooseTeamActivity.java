@@ -73,7 +73,7 @@ public class ChooseTeamActivity extends BaseActivity implements ChooseTeamPresen
         layoutManager = new LinearLayoutManager(this);
         teamListView.setLayoutManager(layoutManager);
 
-        teamAdapter = new TeamAdapter(teamsList);
+        teamAdapter = new TeamAdapter(teamsList, this.getApplicationContext());
         teamListView.setAdapter(teamAdapter);
 
         teamListView.setVisibility(View.VISIBLE);
