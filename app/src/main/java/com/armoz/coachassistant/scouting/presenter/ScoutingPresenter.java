@@ -52,6 +52,10 @@ public class ScoutingPresenter {
 
     }
 
+    public void createTag(int currentPosition) {
+        //TODO: add tag to database 
+    }
+
 
     public interface View {
         void FFmpegNotSupportedShowError();

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
@@ -17,6 +18,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class ScoutingActivity extends BaseActivity implements ScoutingPresenter.View {
 
@@ -25,6 +27,9 @@ public class ScoutingActivity extends BaseActivity implements ScoutingPresenter.
 
     @BindView(R.id.scouting_videoView)
     VideoView videoView;
+
+    @BindView(R.id.scouting_tagButton)
+    Button tagButton;
 
 
     public static Intent buildIntent(Context context) {
@@ -64,5 +69,11 @@ public class ScoutingActivity extends BaseActivity implements ScoutingPresenter.
         mediaController.setAnchorView(videoView);
         videoView.setMediaController(mediaController);
         videoView.start();
+    }
+
+    @OnClick(R.id.scouting_tagButton)
+    public void createTag(){
+        presenter.createTag(videoView.getCurrentPosition());
+
     }
 }
