@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.MediaController;
+import android.widget.TextView;
 import android.widget.VideoView;
 
 import com.armoz.coachassistant.R;
@@ -31,6 +32,11 @@ public class ScoutingActivity extends BaseActivity implements ScoutingPresenter.
     @BindView(R.id.scouting_tagButton)
     Button tagButton;
 
+    @BindView(R.id.scouting_downloadInputText)
+    TextView downloadInputTextview;
+
+    @BindView(R.id.scouting_downloadButton)
+    Button downloadButton;
 
     public static Intent buildIntent(Context context) {
         return new Intent(context, ScoutingActivity.class);
@@ -75,5 +81,10 @@ public class ScoutingActivity extends BaseActivity implements ScoutingPresenter.
     public void createTag(){
         presenter.createTag(videoView.getCurrentPosition());
 
+    }
+
+    @OnClick(R.id.scouting_downloadButton)
+    public void download(){
+        presenter.startDownload(this.getApplicationContext(), downloadInputTextview.getText().toString());
     }
 }

@@ -1,4 +1,4 @@
-package com.example;
+package com.coachassistant;
 
 public class DomainClass {
 }

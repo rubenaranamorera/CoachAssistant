@@ -14,11 +14,23 @@
             android:layout_height="wrap_content"
             android:id="@+id/scouting_videoView" />
 
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:id="@+id/scouting_downloadInputText" />
+
         <Button
-            android:text="Button"
+            android:text="Create TAG"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/scouting_tagButton" />
+
+        <Button
+            android:text="Download"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/scouting_downloadButton" />
 
     </LinearLayout>
 
